@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Share My Screen</title>
+</head>
+<body>
+  <h1>Share My Screen</h1>
+  <button onclick="startSharing()">Start Screen Share</button>
+  <video id="screen" autoplay style="width: 90%; border: 2px solid black;"></video>
+
+  <script>
+    function startSharing() {
+      navigator.mediaDevices.getDisplayMedia({ video: true })
+        .then(stream => {
+          document.getElementById('screen').srcObject = stream;
+        })
+        .catch(error => {
+          alert("Permission denied or error: " + error);
+        });
+    }
+  </script>
+</body>
+</html>
